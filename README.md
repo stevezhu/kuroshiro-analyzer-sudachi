@@ -13,22 +13,20 @@ pnpm add kuroshiro kuroshiro-analyzer-sudachi
 ## Usage
 
 ```ts
-import Kuroshiro from 'kuroshiro';
-import SudachiAnalyzer from 'kuroshiro-analyzer-sudachi';
+import Kuroshiro from "kuroshiro";
+import SudachiAnalyzer from "kuroshiro-analyzer-sudachi";
 
 const kuroshiro = new Kuroshiro();
 await kuroshiro.init(new SudachiAnalyzer());
 
-await kuroshiro.convert('日本語を勉強します', { to: 'romaji' });
+await kuroshiro.convert("日本語を勉強します", { to: "romaji" });
 // → "nihongo wo benkyou shi masu"
 ```
 
 To use a different SudachiDict, download `small` / `core` / `full` from [WorksApplications/SudachiDict][sudachidict] or the [S3 mirror][sudachidict-s3] and pass an absolute path:
 
 ```ts
-await kuroshiro.init(
-  new SudachiAnalyzer({ dictPath: '/path/to/system_full.dic' }),
-);
+await kuroshiro.init(new SudachiAnalyzer({ dictPath: "/path/to/system_full.dic" }));
 ```
 
 ### Options

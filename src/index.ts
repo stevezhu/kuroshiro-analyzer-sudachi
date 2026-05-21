@@ -1,6 +1,6 @@
-import { promises as fsp } from 'node:fs';
+import { promises as fsp } from "node:fs";
 
-import { SudachiStateless, TokenizeMode } from 'sudachi-wasm333';
+import { SudachiStateless, TokenizeMode } from "sudachi-wasm333";
 
 export { TokenizeMode };
 
@@ -71,7 +71,7 @@ export default class SudachiAnalyzer {
    */
   async init(): Promise<void> {
     if (this.sudachi) {
-      throw new Error('SudachiAnalyzer has already been initialized.');
+      throw new Error("SudachiAnalyzer has already been initialized.");
     }
     const s = new SudachiStateless();
     await s.initialize_node(fsp.readFile, this.dictPath);
@@ -87,11 +87,9 @@ export default class SudachiAnalyzer {
    */
   async parse(text: string): Promise<KuroshiroToken[]> {
     if (!this.sudachi) {
-      throw new Error(
-        'SudachiAnalyzer is not initialized. Call init() before parse().',
-      );
+      throw new Error("SudachiAnalyzer is not initialized. Call init() before parse().");
     }
-    if (text.trim() === '') return [];
+    if (text.trim() === "") return [];
     const morphemes = this.sudachi.tokenize_raw(text, this.mode);
     return morphemes.map((m) => ({
       surface_form: m.surface,

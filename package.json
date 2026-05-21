@@ -2,6 +2,25 @@
   "name": "kuroshiro-analyzer-sudachi",
   "version": "0.1.0",
   "description": "Sudachi morphological analyzer for kuroshiro, backed by sudachi-wasm333 + SudachiDict",
+  "keywords": [
+    "kuroshiro",
+    "sudachi"
+  ],
+  "homepage": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi#readme",
+  "bugs": {
+    "url": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi/issues"
+  },
+  "license": "MIT",
+  "author": "Steve Zhu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevezhu/kuroshiro-analyzer-sudachi.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,42 +30,20 @@
       "import": "./dist/index.js"
     }
   },
-  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "prepublishOnly": "pnpm run build",
+    "typecheck": "tsc --noEmit"
   },
-  "keywords": [
-    "kuroshiro",
-    "sudachi",
-    "japanese",
-    "morphological",
-    "analyzer",
-    "tokenizer",
-    "wasm",
-    "kanji",
-    "kana",
-    "hiragana",
-    "katakana",
-    "romaji",
-    "furigana"
-  ],
-  "author": "Steve Zhu",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/stevezhu/kuroshiro-analyzer-sudachi.git"
-  },
-  "bugs": {
-    "url": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi/issues"
-  },
-  "homepage": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi#readme",
   "dependencies": {
     "sudachi-wasm333": "^1.0.4"
   },
   "devDependencies": {
+    "@stzhu/tsconfig": "^0.5.0",
     "@types/node": "^25.8.0",
+    "oxfmt": "^0.51.0",
     "typescript": "^5.7.0"
   },
   "engines": {
