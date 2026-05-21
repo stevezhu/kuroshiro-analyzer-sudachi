@@ -26,12 +26,14 @@ export interface KuroshiroToken {
 
 export interface SudachiAnalyzerOptions {
   /**
-   * Absolute path to a SudachiDict `.dic` file. Required — the consumer is
-   * responsible for installing SudachiDict (small / core / full). Download
-   * from https://github.com/WorksApplications/SudachiDict or
+   * Absolute path to a SudachiDict `.dic` file. Optional — when omitted,
+   * sudachi-wasm333 falls back to the `system.dic` bundled in its
+   * `resources/` directory. Provide this to use a larger SudachiDict
+   * (small / core / full) from
+   * https://github.com/WorksApplications/SudachiDict or
    * http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict/
    */
-  dictPath: string;
+  dictPath?: string;
   /**
    * Sudachi split mode. Defaults to `TokenizeMode.C` (longest tokens —
    * keeps compounds and named entities intact, the right choice for
@@ -50,15 +52,15 @@ export interface SudachiAnalyzerOptions {
  *   import SudachiAnalyzer from 'kuroshiro-analyzer-sudachi';
  *
  *   const kuroshiro = new Kuroshiro();
- *   await kuroshiro.init(new SudachiAnalyzer({ dictPath: '/path/to/system_full.dic' }));
+ *   await kuroshiro.init(new SudachiAnalyzer());
  *   await kuroshiro.convert('日本語を勉強します', { to: 'romaji' });
  */
 export default class SudachiAnalyzer {
   private sudachi: SudachiStateless | null = null;
-  private readonly dictPath: string;
+  private readonly dictPath?: string;
   private readonly mode: TokenizeMode;
 
-  constructor(opts: SudachiAnalyzerOptions) {
+  constructor(opts: SudachiAnalyzerOptions = {}) {
     this.dictPath = opts.dictPath;
     this.mode = opts.mode ?? TokenizeMode.C;
   }

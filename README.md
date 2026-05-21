@@ -1,6 +1,6 @@
 # kuroshiro-analyzer-sudachi
 
-[Sudachi][sudachi]-backed morphological analyzer for [kuroshiro][kuroshiro], built on [sudachi-wasm333][sudachi-wasm333] + a [SudachiDict][sudachidict] dictionary file you supply.
+[Sudachi][sudachi]-backed morphological analyzer for [kuroshiro][kuroshiro], built on [sudachi-wasm333][sudachi-wasm333]. Works out of the box with the `system.dic` bundled by sudachi-wasm333; point it at a larger [SudachiDict][sudachidict] file for broader coverage.
 
 Drop-in replacement for the older [kuroshiro-analyzer-kuromoji][analyzer-kuromoji] (kuromoji.js + the 2007-era IPA dictionary) when you want broader, more modern Japanese coverage — proper-noun handling, recent vocabulary, brand names, all the things kuromoji's IPA dict misses.
 
@@ -10,8 +10,6 @@ Drop-in replacement for the older [kuroshiro-analyzer-kuromoji][analyzer-kuromoj
 pnpm add kuroshiro kuroshiro-analyzer-sudachi
 ```
 
-Then download a SudachiDict file (`small` / `core` / `full`) from [WorksApplications/SudachiDict][sudachidict] or the [S3 mirror][sudachidict-s3] and extract `system_*.dic` somewhere your app can read.
-
 ## Usage
 
 ```ts
@@ -19,19 +17,25 @@ import Kuroshiro from 'kuroshiro';
 import SudachiAnalyzer from 'kuroshiro-analyzer-sudachi';
 
 const kuroshiro = new Kuroshiro();
-await kuroshiro.init(
-  new SudachiAnalyzer({ dictPath: '/path/to/system_full.dic' }),
-);
+await kuroshiro.init(new SudachiAnalyzer());
 
 await kuroshiro.convert('日本語を勉強します', { to: 'romaji' });
 // → "nihongo wo benkyou shi masu"
+```
+
+To use a different SudachiDict, download `small` / `core` / `full` from [WorksApplications/SudachiDict][sudachidict] or the [S3 mirror][sudachidict-s3] and pass an absolute path:
+
+```ts
+await kuroshiro.init(
+  new SudachiAnalyzer({ dictPath: '/path/to/system_full.dic' }),
+);
 ```
 
 ### Options
 
 ```ts
 new SudachiAnalyzer({
-  dictPath: string,           // required — absolute path to a SudachiDict .dic file
+  dictPath?: string,          // optional — absolute path to a SudachiDict .dic file; defaults to the system.dic bundled with sudachi-wasm333
   mode?: TokenizeMode,        // default: TokenizeMode.C (longest tokens)
 })
 ```
