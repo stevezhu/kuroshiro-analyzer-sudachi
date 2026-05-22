@@ -40,6 +40,9 @@
   "dependencies": {
     "sudachi-wasm333": "^1.0.4"
   },
+  "peerDependencies": {
+    "kuroshiro": "^1.2.0"
+  },
   "devDependencies": {
     "@stzhu/tsconfig": "^0.5.0",
     "@types/node": "^25.8.0",

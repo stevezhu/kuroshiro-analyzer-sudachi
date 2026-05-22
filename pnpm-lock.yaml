@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      kuroshiro:
+        specifier: ^1.2.0
+        version: 1.2.0
       sudachi-wasm333:
         specifier: ^1.0.4
         version: 1.0.4
@@ -51,6 +54,10 @@ packages:
     resolution: {integrity: sha512-/Mfg83rK3+jsRbl4Vbd0jqxc6M1A1/WNFtgrowRM1unEsD3XcNnrBdMM0JWakd0/RN9lseQKwPduW1TiEwKOlQ==}
     engines: {node: ^22.18.0 || >=24.11.0}
     hasBin: true
+
+  '@babel/runtime@7.29.2':
+    resolution: {integrity: sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==}
+    engines: {node: '>=6.9.0'}
 
   '@babel/types@8.0.0-rc.5':
     resolution: {integrity: sha512-JeSVu/m8x/zpp4CLjYHVNXuhEyOkhPXuxM8YOXjh6L4LlvQNKuUNOTo5KdBuKAcTDHw8DquToTaEkhsBqPXOaA==}
@@ -371,6 +378,10 @@ packages:
     engines: {node: '>=6'}
     hasBin: true
 
+  kuroshiro@1.2.0:
+    resolution: {integrity: sha512-yBGCK9oDOY3LGZ/KXaN9m7ADcAuSczOR2FoMRYwHLUlis3/o/uxdMVROAjENFO0NQJgALhIdWxI/vIBVrMCk9w==}
+    engines: {node: '>=6.5.0'}
+
   obug@2.1.1:
     resolution: {integrity: sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==}
 
@@ -515,6 +526,8 @@ snapshots:
   '@babel/parser@8.0.0-rc.5':
     dependencies:
       '@babel/types': 8.0.0-rc.5
+
+  '@babel/runtime@7.29.2': {}
 
   '@babel/types@8.0.0-rc.5':
     dependencies:
@@ -722,6 +735,10 @@ snapshots:
   import-without-cache@0.4.0: {}
 
   jsesc@3.1.0: {}
+
+  kuroshiro@1.2.0:
+    dependencies:
+      '@babel/runtime': 7.29.2
 
   obug@2.1.1: {}
 
