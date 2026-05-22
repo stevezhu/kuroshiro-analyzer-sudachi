@@ -63,7 +63,7 @@ describe('SudachiAnalyzer', () => {
       const tokens = await analyzer.parse('日本語');
       const withReading = tokens.find((t) => t.reading && t.reading.length > 0);
       expect(withReading).toBeDefined();
-      expect(withReading?.reading).toMatch(/^[゠-ヿ]+$/);
+      expect(withReading?.reading).toMatch(/^\p{Script_Extensions=Katakana}+$/u);
     });
 
     test('preserves surface order across morpheme boundaries', async () => {
