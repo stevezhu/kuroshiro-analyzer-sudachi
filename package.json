@@ -35,23 +35,26 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "prepublishOnly": "pnpm run build",
+    "test": "vitest",
+    "test:run": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "sudachi-wasm333": "^1.0.4"
-  },
-  "peerDependencies": {
-    "kuroshiro": "^1.2.0"
   },
   "devDependencies": {
     "@stzhu/tsconfig": "^0.5.0",
     "@types/node": "^25.8.0",
     "oxfmt": "^0.51.0",
     "tsdown": "^0.22.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.7"
+  },
+  "peerDependencies": {
+    "kuroshiro": "^1.2.0"
   },
   "engines": {
     "node": ">=24"
   },
-  "packageManager": "pnpm@10.28.1"
+  "packageManager": "pnpm@11.2.2"
 }
