@@ -1,0 +1,60 @@
+{
+  "name": "kuroshiro-analyzer-sudachi",
+  "version": "0.1.0",
+  "description": "Sudachi morphological analyzer for kuroshiro, backed by sudachi-wasm333 + SudachiDict",
+  "keywords": [
+    "kuroshiro",
+    "sudachi"
+  ],
+  "homepage": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi",
+  "bugs": {
+    "url": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi/issues"
+  },
+  "license": "MIT",
+  "author": "Steve Zhu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevezhu/kuroshiro-analyzer-sudachi.git"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "prepublishOnly": "pnpm run build",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "sudachi-wasm333": "^1.0.4"
+  },
+  "devDependencies": {
+    "@stzhu/tsconfig": "^0.5.0",
+    "@types/node": "^25.8.0",
+    "oxfmt": "^0.51.0",
+    "tsdown": "^0.22.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "peerDependencies": {
+    "kuroshiro": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.2.2"
+}
