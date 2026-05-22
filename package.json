@@ -6,7 +6,7 @@
     "kuroshiro",
     "sudachi"
   ],
-  "homepage": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi#readme",
+  "homepage": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi",
   "bugs": {
     "url": "https://github.com/stevezhu/kuroshiro-analyzer-sudachi/issues"
   },
@@ -22,16 +22,16 @@
     "LICENSE"
   ],
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsdown",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "prepublishOnly": "pnpm run build",
@@ -44,6 +44,7 @@
     "@stzhu/tsconfig": "^0.5.0",
     "@types/node": "^25.8.0",
     "oxfmt": "^0.51.0",
+    "tsdown": "^0.22.0",
     "typescript": "^5.7.0"
   },
   "engines": {
